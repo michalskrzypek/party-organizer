@@ -68,6 +68,13 @@ public class Product {
 	public void setGroupPrice(double groupPrice) {
 		this.groupPrice = groupPrice;
 	}
+
+	@Override
+	public String toString() {
+		return "Product [code=" + code + ", productType=" + productType + ", name=" + name + ", description="
+				+ description + ", unitPrice=" + unitPrice + ", groupPrice=" + groupPrice + "]";
+	}
+	
 	
 	
 	

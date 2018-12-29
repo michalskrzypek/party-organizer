@@ -3,15 +3,16 @@ package logic;
 public enum ProductType {
 
 	DRINK("Drink"), FOOD("Food"), DECORATION("Decoration"), PLACE("Place"), OTHER("Other");
-	
+
 	private String name;
-	
+	private ResourceConnector rc = ResourceConnector.getInstance();
+
 	private ProductType(String name) {
-		this.name = ResourceConnector.getProductTypeName(this);
+		this.name = rc.getProductTypeString(this);
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 }

@@ -14,23 +14,11 @@ import javax.swing.JOptionPane;
  * @author mskrz
  *
  */
-public class ProductRepository {
+public class UserRepository {
 
-	private List<Product> products = new ArrayList<>();
+	private List<User> users = new ArrayList<>();
 	private ResourceConnector rc = ResourceConnector.getInstance();
-	
-	private static ProductRepository instance = new ProductRepository();
-	private ProductRepository() {
-		readProducts();
-	}
-	
-	public static ProductRepository getInstance() {
-		if(instance == null) {
-			instance = new ProductRepository();
-		}
-		return instance;
-	}
-	
+
 	public void readProducts() {
 		String line = "";
 		try {
@@ -38,10 +26,9 @@ public class ProductRepository {
 			while (fichero.ready()) {
 				line = fichero.readLine();
 				String[] sections = line.split("@");
-				products.add(new Product(sections[0], rc.getProductTypeByName(sections[1]), sections[2], sections[3],
-						Double.parseDouble(sections[4]), Double.parseDouble(sections[5])));
+//				users.add(new Product(sections[0], ProductType.valueOf(sections[1]), sections[2], sections[3],
+//						Double.parseDouble(sections[4]), Double.parseDouble(sections[5])));
 			}
-
 			fichero.close();
 		} catch (FileNotFoundException fnfe) {
 			JOptionPane.showMessageDialog(null, "File not found");
@@ -50,8 +37,9 @@ public class ProductRepository {
 		}
 	}
 	
-	public List<Product> getProducts() {
+/*	public List<Product> getProducts() {
 		return products;
-	}
+	}*/
 
+	
 }

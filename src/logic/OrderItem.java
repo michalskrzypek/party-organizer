@@ -6,47 +6,45 @@ public class OrderItem {
 	private Product product;
 	private int productCount;
 	private double totalPrice;
-	
+
 	public OrderItem(Order order, Product product, int productCount) {
 		this.product = product;
 		this.productCount = productCount;
-		
-		if(product.isGroupProduct()) {
-			int groupedGuests = order.getNumberOfGuests() / 10;
-			this.totalPrice = product.getGroupPrice() * groupedGuests;
-		} else {
-			this.totalPrice = product.getUnitPrice() * productCount;	
-		}
+
+		OrderItemService service = OrderItemService.getInstance();
+		service.calculatePrice(this);
 	}
-	
-	public void calculatePrice() {
-		if(product.isGroupProduct()) {
-			int groupedGuests = order.getNumberOfGuests() / 10;
-			this.totalPrice = product.getGroupPrice() * groupedGuests;
-		} else {
-			this.totalPrice = product.getUnitPrice() * productCount;	
-		}
+
+	public Order getOrder() {
+		return order;
 	}
-	
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+
 	public Product getProduct() {
 		return product;
 	}
+
 	public void setProduct(Product product) {
 		this.product = product;
 	}
+
 	public int getProductCount() {
 		return productCount;
 	}
+
 	public void setProductCount(int productCount) {
 		this.productCount = productCount;
 	}
+
 	public double getTotalPrice() {
 		return totalPrice;
 	}
+
 	public void setTotalPrice(double totalPrice) {
 		this.totalPrice = totalPrice;
 	}
-	
-	
-	
+
 }

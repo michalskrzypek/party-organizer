@@ -1,6 +1,7 @@
 package logic;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
@@ -14,15 +15,25 @@ public class Order {
 	private LocalDateTime lastModified;
 	private LocalDateTime orderedAt;
 	private boolean completed;
+	private double totalPrice;
 	
 	private UUID uuid = UUID.randomUUID();
 	
-	public Order(User user) {
+	public Order() {
 		String id = uuid.toString().substring(0,5).toUpperCase();
 		this.id = "ORDER_" + id;
-		this.user = user;
 		this.lastModified = LocalDateTime.now();
+		items = new ArrayList<OrderItem>();
 	}
+	
+	public double getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
 	public String getId() {
 		return id;
 	}

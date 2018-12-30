@@ -15,7 +15,7 @@ public class TestApp {
 		ResourceConnector rc = ResourceConnector.getInstance();
 		
 		System.out.println(rc.getTitle());
-		rc.setLocale(new Locale("es"));
+//		rc.setLocale(new Locale("es"));
 		System.out.println(rc.getTitle());
 
 		ProductRepository pr = ProductRepository.getInstance();

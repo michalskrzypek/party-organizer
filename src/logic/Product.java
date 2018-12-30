@@ -68,6 +68,17 @@ public class Product {
 	public void setGroupPrice(double groupPrice) {
 		this.groupPrice = groupPrice;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		Product other = (Product) obj;
+		return this.code.equals(other.getCode());
+	}
+	
+	@Override
+	public int hashCode() {
+		return code.hashCode();
+	}
 
 	@Override
 	public String toString() {

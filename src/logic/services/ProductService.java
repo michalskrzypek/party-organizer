@@ -1,4 +1,4 @@
-package logic;
+package logic.services;
 
 public class ProductService {
 

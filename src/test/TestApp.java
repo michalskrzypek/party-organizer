@@ -4,10 +4,10 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.Locale;
 
-import logic.Product;
-import logic.ProductRepository;
-import logic.ProductType;
-import logic.ResourceConnector;
+import logic.entities.Product;
+import logic.enums.ProductType;
+import logic.repositories.ProductRepository;
+import utils.ResourceConnector;
 
 public class TestApp {
 

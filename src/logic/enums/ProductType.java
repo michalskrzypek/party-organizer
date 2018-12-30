@@ -1,4 +1,6 @@
-package logic;
+package logic.enums;
+
+import utils.ResourceConnector;
 
 public enum ProductType {
 

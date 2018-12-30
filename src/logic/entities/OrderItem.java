@@ -1,4 +1,6 @@
-package logic;
+package logic.entities;
+
+import logic.services.OrderItemService;
 
 public class OrderItem {
 

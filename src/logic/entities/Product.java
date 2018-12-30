@@ -1,4 +1,6 @@
-package logic;
+package logic.entities;
+
+import logic.enums.ProductType;
 
 public class Product {
 

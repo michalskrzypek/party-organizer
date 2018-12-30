@@ -1,8 +1,10 @@
-package logic;
+package utils;
 
 import java.io.File;
 import java.util.Locale;
 import java.util.ResourceBundle;
+
+import logic.enums.ProductType;
 
 /**
  * Singleton

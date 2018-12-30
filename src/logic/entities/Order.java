@@ -15,68 +15,97 @@ public class Order {
 	private LocalDateTime lastModified;
 	private LocalDateTime orderedAt;
 	private boolean completed;
-	private double totalPrice;
-	
+	private double total;
+	private String comment;
+	private LocalDateTime partyDate;
+
 	private UUID uuid = UUID.randomUUID();
-	
+
 	public Order() {
-		String id = uuid.toString().substring(0,5).toUpperCase();
+		String id = uuid.toString().substring(0, 5).toUpperCase();
 		this.id = "ORDER_" + id;
 		this.lastModified = LocalDateTime.now();
 		items = new ArrayList<OrderItem>();
 	}
-	
-	public double getTotalPrice() {
-		return totalPrice;
+
+	public String getComment() {
+		return comment;
 	}
 
-	public void setTotalPrice(double totalPrice) {
-		this.totalPrice = totalPrice;
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public LocalDateTime getPartyDate() {
+		return partyDate;
+	}
+
+	public void setPartyDate(LocalDateTime partyDate) {
+		this.partyDate = partyDate;
+	}
+
+	public double getTotal() {
+		return total;
+	}
+
+	public void setTotal(double total) {
+		this.total = total;
 	}
 
 	public String getId() {
 		return id;
 	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
+
 	public User getUser() {
 		return user;
 	}
+
 	public void setUser(User user) {
 		this.user = user;
 	}
+
 	public List<OrderItem> getItems() {
 		return items;
 	}
+
 	public void setItems(List<OrderItem> items) {
 		this.items = items;
 	}
+
 	public LocalDateTime getLastModified() {
 		return lastModified;
 	}
+
 	public void setLastModified(LocalDateTime lastModified) {
 		this.lastModified = lastModified;
 	}
+
 	public LocalDateTime getOrderedAt() {
 		return orderedAt;
 	}
+
 	public void setOrderedAt(LocalDateTime orderedAt) {
 		this.orderedAt = orderedAt;
 	}
+
 	public boolean isCompleted() {
 		return completed;
 	}
+
 	public void setCompleted(boolean completed) {
 		this.completed = completed;
 	}
+
 	public int getNumberOfGuests() {
 		return numberOfGuests;
 	}
+
 	public void setNumberOfGuests(int numberOfGuests) {
 		this.numberOfGuests = numberOfGuests;
 	}
-	
-	
-	
+
 }

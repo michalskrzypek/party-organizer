@@ -18,7 +18,7 @@ public class ResourceConnector {
 
 	private Locale locale = new Locale("en");
 	private ResourceBundle texts = ResourceBundle.getBundle("resources/T", locale);
-	private static ResourceConnector instance;
+	private static ResourceConnector instance = new ResourceConnector();
 
 	public static ResourceConnector getInstance() {
 		if (instance == null) {
@@ -65,6 +65,11 @@ public class ResourceConnector {
 		} else {
 			throw new RuntimeException("Can not localize the file!");
 		}
+		return new File(fileName);
+	}
+	
+	public File getUsersFile() {
+		String fileName = "clientes.dat";
 		return new File(fileName);
 	}
 }

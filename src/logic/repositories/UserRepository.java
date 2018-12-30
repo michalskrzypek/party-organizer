@@ -1,8 +1,10 @@
 package logic.repositories;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +16,7 @@ import utils.ResourceConnector;
 
 /**
  * Singleton
+ * 
  * @author mskrz
  *
  */
@@ -22,15 +25,26 @@ public class UserRepository {
 	private List<User> users = new ArrayList<>();
 	private ResourceConnector rc = ResourceConnector.getInstance();
 
+	private static UserRepository instance = new UserRepository();
+	private UserRepository() {
+		readProducts();
+	}
+	
+	public static UserRepository getInstance() {
+		if(instance == null) {
+			instance = new UserRepository();
+		}
+		return instance;
+	}
+	
 	public void readProducts() {
 		String line = "";
 		try {
-			BufferedReader fichero = new BufferedReader(new FileReader(rc.getProductsFile()));
+			BufferedReader fichero = new BufferedReader(new FileReader(rc.getUsersFile()));
 			while (fichero.ready()) {
 				line = fichero.readLine();
 				String[] sections = line.split("@");
-//				users.add(new Product(sections[0], ProductType.valueOf(sections[1]), sections[2], sections[3],
-//						Double.parseDouble(sections[4]), Double.parseDouble(sections[5])));
+				users.add(new User(sections[0], sections[1]));
 			}
 			fichero.close();
 		} catch (FileNotFoundException fnfe) {
@@ -39,10 +53,28 @@ public class UserRepository {
 			new RuntimeException("I/O error.");
 		}
 	}
-	
-/*	public List<Product> getProducts() {
-		return products;
-	}*/
 
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public User getUserByName(String name) {
+		return users
+				.stream()
+				.filter(u -> u.getName().equals(name))
+				.findFirst()
+				.orElseThrow(() -> new RuntimeException("User: " + name + " does not exist!"));
+	}
 	
+	public void saveUser(User user) {
+		try {
+			BufferedWriter br = new BufferedWriter(new FileWriter(rc.getUsersFile()));
+			br.write(user.getName() + "@" + user.getPassword());
+			br.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
 }

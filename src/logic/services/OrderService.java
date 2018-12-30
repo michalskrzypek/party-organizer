@@ -37,7 +37,7 @@ public class OrderService {
 		order.getItems().remove(itemToRemove);
 	}
 
-	public OrderItem getItemByProductCode(Order order, int productCode) {
+	private OrderItem getItemByProductCode(Order order, int productCode) {
 		return order.getItems()
 				.stream()
 				.filter(item -> item.getProduct().getCode().equals(productCode))

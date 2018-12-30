@@ -11,8 +11,16 @@ import logic.repositories.UserRepository;
 public class UserService {
 
 	private UserRepository userRepository = UserRepository.getInstance();
-
-	public boolean validate(String name, String password) {
+	
+	public User login(String name, String password) {
+		if(validate(name, password)) {
+			return userRepository.getUserByName(name);
+		}
+		
+		return null;
+	}
+	
+	private boolean validate(String name, String password) {
 		User user = userRepository.getUserByName(name);
 
 		if (user.getPassword().equals(password)) {

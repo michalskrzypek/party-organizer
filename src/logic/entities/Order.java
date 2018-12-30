@@ -117,4 +117,24 @@ public class Order {
 		this.numberOfGuests = numberOfGuests;
 	}
 
+	public OrderMemento save() {
+		this.lastModified = LocalDateTime.now();
+		return new OrderMemento(id, user, items, numberOfGuests, lastModified, orderedAt, completed, total, discount,
+				comment, partyDate);
+	}
+	
+	public void load(OrderMemento orderMemento) {
+		id = orderMemento.getId();
+		user = orderMemento.getUser();
+		items = orderMemento.getItems() ;
+		numberOfGuests = orderMemento.getNumberOfGuests() ;
+		lastModified = orderMemento.getLastModified();
+		orderedAt = orderMemento.getOrderedAt();
+		completed = orderMemento.isCompleted();
+		total = orderMemento.getTotal();
+		discount = orderMemento.isDiscount();
+		comment = orderMemento.getComment();
+		partyDate = orderMemento.getPartyDate();
+	}
+
 }

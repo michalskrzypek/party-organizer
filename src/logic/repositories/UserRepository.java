@@ -15,7 +15,7 @@ import logic.entities.User;
 import utils.ResourceConnector;
 
 /**
- * Singleton
+ * Singleton, reading user file and writing to it, fetching plain user data
  * 
  * @author mskrz
  *
@@ -27,7 +27,7 @@ public class UserRepository {
 
 	private static UserRepository instance = new UserRepository();
 	private UserRepository() {
-		readProducts();
+		readUsers();
 	}
 	
 	public static UserRepository getInstance() {
@@ -37,7 +37,7 @@ public class UserRepository {
 		return instance;
 	}
 	
-	public void readProducts() {
+	public void readUsers() {
 		String line = "";
 		try {
 			BufferedReader fichero = new BufferedReader(new FileReader(rc.getUsersFile()));
@@ -53,18 +53,6 @@ public class UserRepository {
 			new RuntimeException("I/O error.");
 		}
 	}
-
-	public List<User> getUsers() {
-		return users;
-	}
-
-	public User getUserByName(String name) {
-		return users
-				.stream()
-				.filter(u -> u.getName().equals(name))
-				.findFirst()
-				.orElseThrow(() -> new RuntimeException("User: " + name + " does not exist!"));
-	}
 	
 	public void saveUser(User user) {
 		try {
@@ -76,5 +64,19 @@ public class UserRepository {
 		}
 		
 	}
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public User getUserByName(String name) {
+		return users
+				.stream()
+				.filter(u -> u.getName().equals(name))
+				.findFirst()
+				.get();
+	}
+	
+
 
 }

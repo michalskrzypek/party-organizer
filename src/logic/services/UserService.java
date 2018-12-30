@@ -3,11 +3,16 @@ package logic.services;
 import logic.entities.User;
 import logic.repositories.UserRepository;
 
+/**
+ * working with repo, service methods and operations regarding login and signup
+ * @author mskrz
+ *
+ */
 public class UserService {
 
 	private UserRepository userRepository = UserRepository.getInstance();
 
-	public boolean validateUser(String name, String password) {
+	public boolean validate(String name, String password) {
 		User user = userRepository.getUserByName(name);
 
 		if (user.getPassword().equals(password)) {
@@ -18,6 +23,10 @@ public class UserService {
 	}
 	
 	public void signUp(String name, String password) {
+		if(userRepository.getUserByName(name) != null) {
+			throw new RuntimeException("User with the name: " + name + " already exist!");
+		}
+		
 		User user = new User(name, password);
 		userRepository.saveUser(user);
 	}

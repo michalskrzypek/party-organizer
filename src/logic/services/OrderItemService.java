@@ -38,7 +38,7 @@ public class OrderItemService {
 		Order order = orderItem.getOrder();
 		
 		if(product.isGroupProduct()) {
-			int groupedGuests = order.getNumberOfGuests() / 10;
+			double groupedGuests = (double) order.getNumberOfGuests() / 10;
 			orderItem.setTotalPrice(product.getGroupPrice() * groupedGuests);
 		} else {
 			orderItem.setTotalPrice(product.getUnitPrice() * orderItem.getProductCount());	

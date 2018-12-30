@@ -13,7 +13,7 @@ import logic.entities.Product;
 import utils.ResourceConnector;
 
 /**
- * Singleton
+ * Singleton, fetching plain products data, delivering particular produckts from the list etc. 
  * @author mskrz
  *
  */
@@ -55,6 +55,22 @@ public class ProductRepository {
 	
 	public List<Product> getProducts() {
 		return products;
+	}
+	
+	public Product getProductByName(String name) {
+		return products
+				.stream()
+				.filter(p -> p.getName().equals(name))
+				.findFirst()
+				.orElseThrow(() -> new RuntimeException("Product with the name: " + name + " does not exist"));
+	}
+
+	public Product getProductByCode(String code) {
+		return products
+				.stream()
+				.filter(p -> p.getCode().equals(code))
+				.findFirst()
+				.orElseThrow(() -> new RuntimeException("Product with the code: " + code + " does not exist"));
 	}
 
 }

@@ -67,9 +67,13 @@ public class ResourceConnector {
 		}
 		return new File(fileName);
 	}
-	
+
 	public File getUsersFile() {
 		String fileName = "clientes.dat";
 		return new File(fileName);
+	}
+
+	public double getDiscountPercentage() {
+		return Double.parseDouble(texts.getString("discount"));
 	}
 }

@@ -16,6 +16,7 @@ public class Order {
 	private LocalDateTime orderedAt;
 	private boolean completed;
 	private double total;
+	private boolean discount;
 	private String comment;
 	private LocalDateTime partyDate;
 
@@ -26,6 +27,14 @@ public class Order {
 		this.id = "ORDER_" + id;
 		this.lastModified = LocalDateTime.now();
 		items = new ArrayList<OrderItem>();
+	}
+
+	public boolean isDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(boolean discount) {
+		this.discount = discount;
 	}
 
 	public String getComment() {

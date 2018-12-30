@@ -19,6 +19,7 @@ public class Order {
 	private boolean discount;
 	private String comment;
 	private LocalDateTime partyDate;
+	private OrderCustomer customer;
 
 	private UUID uuid = UUID.randomUUID();
 
@@ -117,17 +118,25 @@ public class Order {
 		this.numberOfGuests = numberOfGuests;
 	}
 
+	public OrderCustomer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(OrderCustomer customer) {
+		this.customer = customer;
+	}
+
 	public OrderMemento save() {
 		this.lastModified = LocalDateTime.now();
 		return new OrderMemento(id, user, items, numberOfGuests, lastModified, orderedAt, completed, total, discount,
 				comment, partyDate);
 	}
-	
+
 	public void load(OrderMemento orderMemento) {
 		id = orderMemento.getId();
 		user = orderMemento.getUser();
-		items = orderMemento.getItems() ;
-		numberOfGuests = orderMemento.getNumberOfGuests() ;
+		items = orderMemento.getItems();
+		numberOfGuests = orderMemento.getNumberOfGuests();
 		lastModified = orderMemento.getLastModified();
 		orderedAt = orderMemento.getOrderedAt();
 		completed = orderMemento.isCompleted();

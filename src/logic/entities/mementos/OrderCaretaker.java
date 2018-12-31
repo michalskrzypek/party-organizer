@@ -1,4 +1,4 @@
-package logic.entities;
+package logic.entities.mementos;
 
 public class OrderCaretaker {
 

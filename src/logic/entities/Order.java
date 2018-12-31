@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
+import logic.entities.mementos.OrderMemento;
+
 public class Order {
 
 	private String id;

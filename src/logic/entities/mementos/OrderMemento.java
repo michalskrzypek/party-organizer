@@ -1,7 +1,10 @@
-package logic.entities;
+package logic.entities.mementos;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
+import logic.entities.OrderItem;
+import logic.entities.User;
 
 public class OrderMemento {
 

@@ -5,6 +5,7 @@ public class OrderCustomer {
 	private String firstName;
 	private String surname;
 	private String nationalID;
+	private String phoneNumber;
 
 	public OrderCustomer(String firstName, String surname, String nationalID) {
 		super();
@@ -36,4 +37,13 @@ public class OrderCustomer {
 	public void setNationalID(String nationalID) {
 		this.nationalID = nationalID;
 	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
 }

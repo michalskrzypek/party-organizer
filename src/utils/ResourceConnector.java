@@ -26,6 +26,10 @@ public class ResourceConnector {
 		}
 		return instance;
 	}
+	
+	private ResourceConnector() {
+		
+	}
 
 	public void setLocale(Locale locale) {
 		this.locale = locale;

@@ -57,12 +57,12 @@ public class OrderService {
 						"Order item with the product: " + product.getName() + " does not exist in the order."));
 	}
 
-	public void removeFromOrder(Order order, int productCode) {
+	public void removeFromOrder(Order order, String productCode) {
 		OrderItem itemToRemove = getItemByProductCode(order, productCode);
 		order.getItems().remove(itemToRemove);
 	}
 
-	private OrderItem getItemByProductCode(Order order, int productCode) {
+	private OrderItem getItemByProductCode(Order order, String productCode) {
 		return order.getItems().stream().filter(item -> item.getProduct().getCode().equals(productCode)).findFirst()
 				.orElseThrow(() -> new RuntimeException("Product does not exist in the order!"));
 	}
